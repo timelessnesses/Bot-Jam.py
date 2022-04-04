@@ -1,13 +1,18 @@
-import flask
 import threading
+
+import flask
+
 app = flask.Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def index():
-    return 'Hello, World!'
+    return "Hello, World!"
+
 
 def run():
-    app.run(host='0.0.0.0', port=80)
+    app.run(host="0.0.0.0", port=80)
+
 
 def alive():
     threading.Thread(target=run).start()

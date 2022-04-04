@@ -1,9 +1,9 @@
+import io
+import sys
+import traceback
 from difflib import get_close_matches
 
 import discord
-import traceback
-import sys
-import io
 from discord.ext import commands
 
 

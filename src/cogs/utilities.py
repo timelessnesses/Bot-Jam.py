@@ -9,10 +9,16 @@ class Utilities(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
+        """
+        Test bot's latency
+        """
         await ctx.send(f"Pong! {round(self.bot.latency * 1000)}ms")
 
     @commands.command()
     async def credits(self, ctx):
+        """
+        Credits because yes
+        """
         await ctx.send("This bot was made by <@890913140278181909>")
 
     @commands.command(name="help")

@@ -3,8 +3,9 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
-import os
 import asyncio
+import os
+
 import keep_alive
 
 bot = commands.Bot(command_prefix="bj!")
