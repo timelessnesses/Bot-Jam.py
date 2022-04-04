@@ -10,7 +10,7 @@ class Moderation(commands.Cog):
         self.bot = bot
 
     def parse_time(
-        self, time: typing.Optional[int, str, datetime.timedelta, datetime.datetime]
+        self, time: typing.Union[int, str, datetime.timedelta, datetime.datetime]
     ) -> datetime.datetime:
         if isinstance(time, datetime.timedelta):
             return datetime.datetime.now() + time

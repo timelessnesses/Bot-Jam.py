@@ -8,7 +8,7 @@ import os
 
 import keep_alive
 
-bot = commands.Bot(command_prefix="bj!")
+bot = commands.Bot(command_prefix="bj!",intents=discord.Intents.all())
 
 
 @bot.event
@@ -28,7 +28,8 @@ async def load_cogs(bot: commands.Bot) -> None:
 async def main(bot: commands.Bot) -> None:
     await load_cogs(bot)
     async with bot:
-        keep_alive.alive()
+        if os.environ["TEST"] != "1":
+            keep_alive.alive()
         await bot.start(os.environ["DISCORD_TOKEN"])
 
 

@@ -7,7 +7,7 @@ import discord
 from discord.ext import commands
 
 
-class Rate(commands.Cog):
+class Rates(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
