@@ -46,8 +46,7 @@ class Utilities(commands.Cog):
         else:
             command = self.bot.get_command(command)
             if command is None:
-                await ctx.send("That command does not exist.")
-                return
+                return await ctx.send("That command does not exist.")
             embed = discord.Embed(
                 title=f"Help: {command.name}",
                 description=command.help,
