@@ -33,16 +33,14 @@ class Moderation(commands.Cog):
         reason: str = None,
     ):
         if user is None:
-            await ctx.send("Please specify a user to mute")
-            return
+            return await ctx.send("Please specify a user to mute")
         if time is None:
             await ctx.send(
                 'Please specify a time (seconds or "Month/Day Hour/Minutes/Seconds" (due to discord API allow timeout up to 28 days)) to mute'
             )
             return
         if reason is None:
-            await ctx.send("Please specify a reason to mute")
-            return
+            return await ctx.send("Please specify a reason to mute")
         time = self.parse_time(time)
         await user.send(
             embed=discord.Embed(
@@ -63,8 +61,7 @@ class Moderation(commands.Cog):
     @commands.command()
     async def unmute(self, ctx: commands.Context, user: discord.Member = None):
         if user is None:
-            await ctx.send("Please specify a user to unmute")
-            return
+            return await ctx.send("Please specify a user to unmute")
         await user.send(
             embed=discord.Embed(
                 title="You have been unmuted",
@@ -86,11 +83,9 @@ class Moderation(commands.Cog):
         self, ctx: commands.Context, user: discord.Member = None, *, reason: str = None
     ):
         if user is None:
-            await ctx.send("Please specify a user to kick")
-            return
+            return await ctx.send("Please specify a user to kick")
         if reason is None:
-            await ctx.send("Please specify a reason to kick")
-            return
+            return await ctx.send("Please specify a reason to kick")
         await user.send(
             embed=discord.Embed(
                 title="You have been kicked",
@@ -112,11 +107,9 @@ class Moderation(commands.Cog):
         self, ctx: commands.Context, user: discord.Member = None, *, reason: str = None
     ):
         if user is None:
-            await ctx.send("Please specify a user to ban")
-            return
+            return await ctx.send("Please specify a user to ban")
         if reason is None:
-            await ctx.send("Please specify a reason to ban")
-            return
+            return await ctx.send("Please specify a reason to ban")
         await user.send(
             embed=discord.Embed(
                 title="You have been banned",
@@ -138,11 +131,9 @@ class Moderation(commands.Cog):
         self, ctx: commands.Context, user: discord.Member = None, *, reason: str = None
     ):
         if user is None:
-            await ctx.send("Please specify a user to unban")
-            return
+            return await ctx.send("Please specify a user to unban")
         if reason is None:
-            await ctx.send("Please specify a reason to unban")
-            return
+            return await ctx.send("Please specify a reason to unban")
         await user.send(
             embed=discord.Embed(
                 title="You have been unbanned",
