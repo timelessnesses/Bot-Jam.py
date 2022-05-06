@@ -19,8 +19,7 @@ class Rates(commands.Cog):
         Setup the rate
         """
         if rate_name is None:
-            await ctx.send("Please provide a name for the rate!")
-            return
+            return await ctx.send("Please provide a name for the rate!")
         rate_id = "".join(random.choices(string.ascii_letters + string.digits, k=10))
         await ctx.send(
             embed=discord.Embed(
@@ -74,8 +73,7 @@ class Rates(commands.Cog):
         )
         channel = self.bot.get_channel(int(channel_id.content))
         if channel is None:
-            await ctx.send("Channel not found!")
-            return
+            return await ctx.send("Channel not found!")
         await user_dm(
             embed=discord.Embed(
                 title="Logging channel",
@@ -115,13 +113,11 @@ class Rates(commands.Cog):
         Rate the choices
         """
         if vote_id == None:
-            await ctx.send("Please provide a vote ID")
-            return
+            return await ctx.send("Please provide a vote ID")
         async with aiofiles.open("data/votes.json", "r") as f:
             votes = json.load(f)
         if vote_id not in votes:
-            await ctx.send("That vote ID does not exist")
-            return
+            return await ctx.send("That vote ID does not exist")
         await self.process_rate(ctx, vote_id)
 
     async def process_rate(self, ctx, vote_id):
@@ -269,13 +265,11 @@ class Rates(commands.Cog):
         Get info about a rate
         """
         if rate_id == None:
-            await ctx.send("Please provide a rate ID")
-            return
+            return await ctx.send("Please provide a rate ID")
         async with aiofiles.open("data/rates.json", "r") as f:
             rates = json.load(f)
         if rate_id not in rates:
-            await ctx.send("That rate ID does not exist")
-            return
+            return await ctx.send("That rate ID does not exist")
         rate = rates[rate_id]
         await ctx.send(
             embed=discord.Embed(
@@ -290,13 +284,11 @@ class Rates(commands.Cog):
         Delete a rate
         """
         if rate_id == None:
-            await ctx.send("Please provide a rate ID")
-            return
+            return await ctx.send("Please provide a rate ID")
         async with aiofiles.open("data/rates.json", "r") as f:
             rates = json.load(f)
         if rate_id not in rates:
-            await ctx.send("That rate ID does not exist")
-            return
+            return await ctx.send("That rate ID does not exist")
         await ctx.send(
             embed=discord.Embed(
                 title="Are you sure you want to delete this rate?",
@@ -330,13 +322,11 @@ class Rates(commands.Cog):
         Edit a rate
         """
         if rate_id == None:
-            await ctx.send("Please provide a rate ID")
-            return
+            return await ctx.send("Please provide a rate ID")
         async with aiofiles.open("data/rates.json", "r") as f:
             rates = json.load(f)
         if rate_id not in rates:
-            await ctx.send("That rate ID does not exist")
-            return
+            return await ctx.send("That rate ID does not exist")
         rate = rates[rate_id]
         await ctx.send(
             embed=discord.Embed(
